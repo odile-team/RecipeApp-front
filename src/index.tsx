@@ -1,15 +1,15 @@
 import React from "react";
 import { FunctionComponent } from "react";
-import { Text, View } from "react-native";
+import { Text } from "react-native";
 
 import { IndexProps } from "types/index";
-import { IndexContainer } from "styles/index";
+import { MainCenteredContainer } from "styles/index";
 
 const Index: FunctionComponent<IndexProps> = () => {
     return (
-        <IndexContainer>
+        <MainCenteredContainer>
             <Text>Welcome</Text>
-        </IndexContainer>
+        </MainCenteredContainer>
     );
 };
 

@@ -1,7 +1,7 @@
 // @ts-ignore
-import styled, { css } from "@emotion/native";
+import styled from "@emotion/native";
 
-export const IndexContainer = styled.View`
+export const MainCenteredContainer = styled.View`
     height: 100%;
     width: 100%;
     background-color: white;

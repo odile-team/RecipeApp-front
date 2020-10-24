@@ -1,11 +1,6 @@
 import React from "react";
-import { View } from "react-native";
-import Index from "index";
+import MainStack from "navigation/MainStack";
 
 export default function App() {
-    return (
-        <View>
-            <Index />
-        </View>
-    );
+    return <MainStack />;
 }

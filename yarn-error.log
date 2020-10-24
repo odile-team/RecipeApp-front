@@ -1,5 +1,5 @@
 Arguments: 
-  /Users/flxw/.nvm/versions/node/v14.9.0/bin/node /usr/local/Cellar/yarn/1.21.1/libexec/bin/yarn.js add @types/emotion
+  /Users/flxw/.nvm/versions/node/v14.9.0/bin/node /usr/local/Cellar/yarn/1.21.1/libexec/bin/yarn.js add @types/react-navigation-native
 
 PATH: 
   /Users/flxw/.nvm/versions/node/v14.9.0/bin:/usr/local/anaconda3/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/usr/local/munki:/opt/X11/bin:/Library/Apple/usr/bin:/Users/flxw/go/bin:/Users/flxw/.antigen/bundles/robbyrussell/oh-my-zsh/lib:/Users/flxw/.antigen/bundles/robbyrussell/oh-my-zsh/plugins/git:/Users/flxw/.antigen/bundles/iam4x/zsh-iterm-touchbar:/Users/flxw/.antigen/bundles/robbyrussell/oh-my-zsh/plugins/heroku:/Users/flxw/.antigen/bundles/robbyrussell/oh-my-zsh/plugins/pip:/Users/flxw/.antigen/bundles/robbyrussell/oh-my-zsh/plugins/lein:/Users/flxw/.antigen/bundles/robbyrussell/oh-my-zsh/plugins/command-not-found:/Users/flxw/.antigen/bundles/zsh-users/zsh-syntax-highlighting:/Users/flxw/Library/Android/sdk/emulator:/Users/flxw/Library/Android/sdk/tools:/Users/flxw/Library/Android/sdk/tools/bin:/Users/flxw/Library/Android/sdk/platform-tools
@@ -14,7 +14,7 @@ Platform:
   darwin x64
 
 Trace: 
-  Error: https://registry.npmjs.org/@types%2femotion: Not found
+  Error: https://registry.npmjs.org/@types%2freact-navigation-native: Not found
       at Request.params.callback [as _callback] (/usr/local/Cellar/yarn/1.21.1/libexec/lib/cli.js:66947:18)
       at Request.self.callback (/usr/local/Cellar/yarn/1.21.1/libexec/lib/cli.js:140665:22)
       at Request.emit (events.js:314:20)

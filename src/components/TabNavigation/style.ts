@@ -1,27 +1,39 @@
 // @ts-ignore
 import styled from "@emotion/native";
-import {  Transitioning } from "react-native-reanimated";
+import {  StyleSheet } from "react-native";
 
-import {colors} from "styles/color"
+import {colors} from "globalStyles/color"
+
 
 export const Container = styled.TouchableWithoutFeedback``;
 
-export const Background = styled(Transitioning.View)`
-    flex: auto;
-    flex-direction: row;
-    align-items: center;
+export const styles = StyleSheet.create({
+    background: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: colors.lightgrey,
+        borderRadius: 100,
+        margin: 6,
+    }
+})
+
+export const Icon = styled.View`
     justify-content: center;
-    background: ${colors.lightgrey};
-    border-radius: 100px;
-    margin: 6px;
-`;
-export const Icon = styled.Image`
     height: 24px;
     width: 24px;
+    flex: 2;
+    align-items: center;
 `;
 
 export const Label = styled.Text`
+    flex: 3;
     color: ${colors.mainBlue};
     font-weight: 600;
-    margin-left: 8px;
+    font-size: ${({fontSize}: {fontSize: string}): string => {
+        return fontSize
+    }};
+    display: flex;
+    overflow: hidden;
+
 `;

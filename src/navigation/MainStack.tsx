@@ -1,4 +1,5 @@
 import React from "react";
+import { Dimensions } from 'react-native';
 // @ts-ignore
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -12,20 +13,20 @@ import GroceryScreen from "containers/GroceryScreen/Index";
 import ProfileScreen from "containers/ProfileScreen/Index";
 import RecipeScreen from "containers/RecipeScreen/Index";
 
+import { percentOf } from 'utils/percentOf'
+
+import {styles} from './styleSheet'
+
 const Tab = createBottomTabNavigator();
 
 const MainStack = () => {
+    const windowHeight = Dimensions.get('window').height;
+
     return (
         <NavigationContainer>
-            {/* TODO: Terminer le style et le déplacer dans un autre fichier */}
+            {/* TODO: Faire fonctionner le style */}
             {/* TODO: Enlever l'ombre ou la border  */}
-            <Tab.Navigator screenOptions={mainNavigatorOptions}     tabBarOptions={{ style: {
-                elevation: 0,   // for Android
-                shadowOpacity: 0, // for iOS,
-                backgroundColor: 'red',
-                borderRadius: 13,
-                height:"8%",
-            },
+            <Tab.Navigator screenOptions={mainNavigatorOptions} tabBarOptions={{ style: styles(windowHeight),
     }}>
                 <Tab.Screen
                     name="Recipe screen"

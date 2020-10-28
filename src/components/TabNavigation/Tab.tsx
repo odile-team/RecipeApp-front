@@ -1,55 +1,72 @@
-import React, { useRef } from "react";
-// @ts-ignore
-import { Transition } from "react-native-reanimated";
+import React  from "react";
+import { Dimensions } from 'react-native';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import  Animated, {
+    useAnimatedStyle,
+    useSharedValue,
+    useDerivedValue,
+    withSpring,
+  } from "react-native-reanimated";
+  import { mix } from "react-native-redash";
 
-import { Container, Background, Label } from './style'
+  import { percentOf } from 'utils/percentOf'
+
+import {icons, Index} from "./config"
+
+import {colors} from "globalStyles/color"
+
+import { Container, styles, Label, Icon } from './style'
 
 // interface accessibilityStateValue {
 //     selected: boolean;
 // }
+
 // TODO: comprendre les typing de accessibilityState et onPress
 const Tab = ({
     label,
     accessibilityState,
-    onPress, }: any
-    // }: {
-    //     label: string;
-    //     accessibilityState: any;
-    //     onPress: any;
-) => {
-    const focused = accessibilityState.selected;
-    const icon = !focused ? label.charAt(0).toUpperCase() : label;
+    onPress,
+    }: {
+        label: Index;
+        accessibilityState: any;
+        onPress: any;
+    }
+    ) => {
+    const focused: boolean = accessibilityState.selected;
+    const icon: string = icons[label];
+    const windowWidth: number = Dimensions.get('window').width;
 
-    // TODO: Refaire les animation clean en lisant reanimated
-    const transition = (
-        <Transition.Sequence>
-            <Transition.Out type="fade" durationMs={10} />
-            <Transition.Change interpolation="easeInOut" durationMs={100} />
-            <Transition.In type="fade" durationMs={10} />
-        </Transition.Sequence>
-    );
+    const isFocused: Animated.SharedValue<number> = useSharedValue(focused ? 1 : 0)
+    const transition: Animated.SharedValue<number> = useDerivedValue(() => {
+        return withSpring(isFocused.value)
+    })
 
-    // TODO: comprendre les types de useRef
-    const ref: any = useRef();
+
+    const animatedStyle = useAnimatedStyle(() => {
+        const width = mix(transition.value, (windowWidth * 21/100) - 12, (windowWidth * 38/100) - 12)
+        return {width: width}
+      });
 
     return (
         <Container
             onPress={() => {
-                ref.current.animateNextTransition();
                 onPress();
             }}
         >
-            <Background
-                focused={focused}
-                label={label}
-                ref={ref}
-                transition={transition}
+            <Animated.View
+                style={[styles.background, animatedStyle]}
             >
-                {/* TODO: Mettre de belles icones */}
-                <Label label={label}>
-                    {focused ? label.charAt(0).toUpperCase() + label.slice(1) : icon}
-                </Label>
-            </Background>
+                <Icon>
+                <MaterialCommunityIcons name={icon} size={percentOf(windowWidth, 5)} color={colors.mainBlue} />
+                </Icon>
+                {focused ?
+                <Label
+                    fontSize={(percentOf(windowWidth, 4)).toString()}
+                    numberOfLines={1}
+                >
+                    {label.charAt(0).toUpperCase() + label.slice(1)}
+                </Label> : <></>}
+            </Animated.View>
         </Container>
     );
 };

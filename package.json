@@ -8,11 +8,10 @@
         "eject": "expo eject",
         "postinstall": "husky install",
         "test": "jest"
-
     },
     "jest": {
         "preset": "react-native"
-      },
+    },
     "dependencies": {
         "@emotion/core": "^10.0.35",
         "@emotion/native": "^10.0.27",

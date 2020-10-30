@@ -15,6 +15,8 @@ import RecipeScreen from "containers/RecipeScreen/Index";
 
 import { styles } from "./styleSheet";
 
+import { RECIPE, SEARCH, GROCERY, PROFILE } from "data/ScreenName";
+
 const Tab = createBottomTabNavigator();
 
 const MainStack = () => {
@@ -29,12 +31,12 @@ const MainStack = () => {
                 tabBarOptions={{ style: style.navigator }}
             >
                 <Tab.Screen
-                    name="Recipe screen"
+                    name={RECIPE}
                     component={RecipeScreen}
                     options={{
                         tabBarButton: ({ accessibilityState, onPress }) => (
                             <TabComponent
-                                label="Recipe"
+                                label={RECIPE}
                                 accessibilityState={accessibilityState}
                                 onPress={onPress}
                             />
@@ -42,29 +44,41 @@ const MainStack = () => {
                     }}
                 />
                 <Tab.Screen
-                    name="Search screen"
+                    name={SEARCH}
                     component={SearchScreen}
                     options={{
-                        tabBarButton: (props) => (
-                            <TabComponent label="Search" {...props} />
+                        tabBarButton: ({ accessibilityState, onPress }) => (
+                            <TabComponent
+                                label={SEARCH}
+                                accessibilityState={accessibilityState}
+                                onPress={onPress}
+                            />
                         ),
                     }}
                 />
                 <Tab.Screen
-                    name="Grocery screen"
+                    name={GROCERY}
                     component={GroceryScreen}
                     options={{
-                        tabBarButton: (props) => (
-                            <TabComponent label="Grocery" {...props} />
+                        tabBarButton: ({ accessibilityState, onPress }) => (
+                            <TabComponent
+                                label={GROCERY}
+                                accessibilityState={accessibilityState}
+                                onPress={onPress}
+                            />
                         ),
                     }}
                 />
                 <Tab.Screen
-                    name="Profile screen"
+                    name={PROFILE}
                     component={ProfileScreen}
                     options={{
-                        tabBarButton: (props) => (
-                            <TabComponent label="Profile" {...props} />
+                        tabBarButton: ({ accessibilityState, onPress }) => (
+                            <TabComponent
+                                label={PROFILE}
+                                accessibilityState={accessibilityState}
+                                onPress={onPress}
+                            />
                         ),
                     }}
                 />

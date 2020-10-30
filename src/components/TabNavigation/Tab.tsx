@@ -17,18 +17,15 @@ import { colors } from "globalStyles/color";
 
 import { Container, styles, Label, Icon } from "./style";
 
-interface accessibilityStateValue {
-    selected: boolean;
-}
-
+// TODO: Essayer d'enlever les any, mais il y'a l'air d'avoir un conflit avec la libraire react navigation
 const Tab = ({
     label,
     accessibilityState,
     onPress,
 }: {
     label: Index;
-    accessibilityState: accessibilityStateValue;
-    onPress: Function;
+    accessibilityState: any;
+    onPress: any;
 }) => {
     const focused: boolean = accessibilityState.selected;
     const icon: string = icons[label];

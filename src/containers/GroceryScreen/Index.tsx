@@ -3,12 +3,12 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import GroceryScreen from "./GroceryScreen";
 
-import { GroceryProps } from "./types";
+import { NavigatorProps } from "./types";
 import { defaultNavigatorOptions } from "navigation/navigationOptions/mainNavigatorOptions";
 
 const Stack = createStackNavigator();
 
-const GroceryScreenNavigation: FunctionComponent<GroceryProps> = () => {
+const GroceryScreenNavigation: FunctionComponent<NavigatorProps> = () => {
     return (
         <Stack.Navigator screenOptions={defaultNavigatorOptions}>
             <Stack.Screen name="GroceryScreen" component={GroceryScreen} />

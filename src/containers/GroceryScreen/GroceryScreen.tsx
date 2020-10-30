@@ -1,8 +1,11 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import { Text } from "react-native";
+
 import { CenteredContainer } from "globalStyles/index";
 
-const GroceryScreen = () => {
+import { GroceryProps } from "./types";
+
+const GroceryScreen: FunctionComponent<GroceryProps> = () => {
     return (
         <CenteredContainer>
             <Text>Grocery Screen</Text>

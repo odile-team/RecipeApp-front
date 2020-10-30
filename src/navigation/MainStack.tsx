@@ -8,10 +8,10 @@ import { mainNavigatorOptions } from "./navigationOptions/mainNavigatorOptions";
 
 import TabComponent from "components/TabNavigation/Tab";
 
-import SearchScreen from "containers/SearchScreen/Index";
-import GroceryScreen from "containers/GroceryScreen/Index";
-import ProfileScreen from "containers/ProfileScreen/Index";
-import RecipeScreen from "containers/RecipeScreen/Index";
+import SearchScreen from "containers/SearchScreen/SearchScreenNavigation";
+import GroceryScreen from "containers/GroceryScreen/GroceryScreenNavigation";
+import ProfileScreen from "containers/ProfileScreen/ProfileScreenNavigation";
+import RecipeScreen from "containers/RecipeScreen/RecipeScreenNavigation";
 
 import { styles } from "./styleSheet";
 

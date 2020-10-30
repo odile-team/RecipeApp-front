@@ -8,10 +8,10 @@ import { mainNavigatorOptions } from "./navigationOptions/mainNavigatorOptions";
 
 import TabComponent from "components/TabNavigation/Tab";
 
-import SearchScreen from "containers/SearchScreen/SearchScreenNavigation";
-import GroceryScreen from "containers/GroceryScreen/GroceryScreenNavigation";
-import ProfileScreen from "containers/ProfileScreen/ProfileScreenNavigation";
-import RecipeScreen from "containers/RecipeScreen/RecipeScreenNavigation";
+import SearchScreen from "containers/SearchScreen";
+import GroceryScreen from "containers/GroceryScreen";
+import ProfileScreen from "containers/ProfileScreen";
+import RecipeScreen from "containers/RecipeScreen";
 
 import { styles } from "./styleSheet";
 
@@ -25,7 +25,6 @@ const MainStack = () => {
 
     return (
         <NavigationContainer>
-            {/* TODO: types de TabComponent */}
             <Tab.Navigator
                 screenOptions={mainNavigatorOptions}
                 tabBarOptions={{ style: style.navigator }}

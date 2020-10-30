@@ -1,0 +1,7 @@
+.expo-shared
+.expo
+.history
+*.json
+*.config.*
+README.md
+yarn*

@@ -1,16 +1,14 @@
-import React, { FunctionComponent } from "react";
-import { Text } from "react-native";
+import React, { FunctionComponent } from 'react';
+import { Text } from 'react-native';
 
-import { CenteredContainer } from "globalStyles/index";
+import { CenteredContainer } from 'globalStyles/index';
 
-import { GroceryProps } from "./types";
+import { GroceryProps } from './types';
 
-const GroceryScreen: FunctionComponent<GroceryProps> = () => {
-    return (
-        <CenteredContainer>
-            <Text>Grocery Screen</Text>
-        </CenteredContainer>
-    );
-};
+const GroceryScreen: FunctionComponent<GroceryProps> = () => (
+  <CenteredContainer>
+    <Text>Grocery Screen</Text>
+  </CenteredContainer>
+);
 
 export default GroceryScreen;

@@ -1,2 +1,2 @@
-export type SearchProps = {};
-export type NavigatorProps = {};
+export type SearchProps = object;
+export type NavigatorProps = object;

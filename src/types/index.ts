@@ -1,1 +1,1 @@
-export type IndexProps = {};
+export type IndexProps = object;

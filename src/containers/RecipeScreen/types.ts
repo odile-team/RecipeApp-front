@@ -1,4 +1,3 @@
-export type RecipeProps = {};
+export type RecipeProps = object;
 
-export type NavigatorProps = {};
-
+export type NavigatorProps = object;

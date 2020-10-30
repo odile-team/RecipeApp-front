@@ -1,4 +1,3 @@
-export type GroceryProps = {};
+export type GroceryProps = object;
 
-export type NavigatorProps = {};
-
+export type NavigatorProps = object;

@@ -1,3 +1,3 @@
-export type ProfileProps = {};
+export type ProfileProps = object;
 
-export type NavigatorProps = {};
+export type NavigatorProps = object;

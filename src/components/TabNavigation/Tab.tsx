@@ -27,7 +27,7 @@ const Tab = ({
   label: Index;
   accessibilityState: any;
   onPress: any;
-}) => {
+}): JSX.Element => {
   const focused: boolean = accessibilityState.selected;
   const icon: string = icons[label];
   const windowWidth: number = Dimensions.get('window').width;

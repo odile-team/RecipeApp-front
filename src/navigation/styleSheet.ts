@@ -1,7 +1,8 @@
 import { StyleSheet } from 'react-native';
 import { percentOf } from 'utils/percentOf';
 
-export const styles = (height: number) =>
+// TODO: types of styleSheet
+export const styles = (height: number): any =>
   StyleSheet.create({
     navigator: {
       borderRadius: 13,

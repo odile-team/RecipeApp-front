@@ -11,6 +11,6 @@ export type FormFields = FormFieldsOptional &
     [key in FormIndex]: string;
   };
 
-export type FormFieldsPlaceholders = {
+export type FieldsTypes = {
   [key in FormIndexPlaceholders]: string;
 };

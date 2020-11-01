@@ -8,8 +8,8 @@ import Loader from 'components/Loader/Loader';
 import FullScreenLayer from 'components/FullScreenLayer/FullScreenLayer';
 
 import { LoginContainer, Title, BottomText } from './style';
-import { LoginText, SignUpText } from './config';
-import { FormFields, FormFieldsPlaceholders, FormIndexPlaceholders } from './types';
+import { LoginText, SignUpText, Fields } from './config';
+import { FormFields, FormIndexPlaceholders } from './types';
 
 const LoginRequest = async (formFields: FormFields): Promise<boolean> => {
   const res: boolean = await new Promise((resolve, _reject) => {
@@ -20,8 +20,18 @@ const LoginRequest = async (formFields: FormFields): Promise<boolean> => {
   return res;
 };
 
+const assignProps = (key: string): object | undefined => {
+  if (
+    Fields[key as FormIndexPlaceholders] === Fields.password ||
+    Fields[key as FormIndexPlaceholders] === Fields.confirmPassword
+  ) {
+    return {
+      passwordMode: true,
+    };
+  }
+};
+
 const LoginScreen = (): JSX.Element => {
-  const [showPassword, setShowPassword] = React.useState(false);
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
   const [signUp, setSignUp] = React.useState(false);
   const [formFields, setFormFields] = React.useState<FormFields>({
@@ -29,13 +39,6 @@ const LoginScreen = (): JSX.Element => {
     password: '',
   });
   const [text, setText] = React.useState(LoginText);
-
-  const formFieldsPlaceholders: FormFieldsPlaceholders = {
-    username: 'Username',
-    email: 'Mail',
-    password: 'Password',
-    confirmPassword: 'Confirm Password',
-  };
 
   React.useEffect(() => {
     if (signUp) {
@@ -50,7 +53,6 @@ const LoginScreen = (): JSX.Element => {
 
   const onChangeFormFields = (key: string, value: string): void =>
     setFormFields((prev) => ({ ...prev, [key]: value }));
-  const onPressIcon = (): void => setShowPassword(!showPassword);
 
   return (
     <LoginContainer>
@@ -63,17 +65,11 @@ const LoginScreen = (): JSX.Element => {
         <>
           <Title>{text.title}</Title>
           {Object.keys(formFields).map((key: string) => {
-            const props =
-              ((key === 'password' || key === 'confirmPassword') && {
-                iconValue: showPassword ? 'eye-outline' : 'eye-off-outline',
-                onPressIcon,
-                showPassword: !showPassword,
-              }) ||
-              {};
+            const props = assignProps(key);
             return (
               <Input
                 key={`${key}-input-field`}
-                placeholderValue={formFieldsPlaceholders[key as FormIndexPlaceholders]}
+                placeholderValue={Fields[key as FormIndexPlaceholders]}
                 value={formFields[key as FormIndexPlaceholders] || ''}
                 onChange={(value: string) => onChangeFormFields(key, value)}
                 {...props}

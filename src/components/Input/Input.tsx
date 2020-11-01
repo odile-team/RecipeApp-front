@@ -3,31 +3,35 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { InputContainer, Placeholder, ValueContainer, ValueField, IconContainer } from './style';
 import { colors } from 'globalStyles/color';
 
+import { passwordIcons } from './IconsName';
+
 const Input = ({
   placeholderValue,
   value,
-  iconValue,
   onChange,
-  onPressIcon,
-  showPassword,
+  passwordMode,
 }: {
   placeholderValue?: string;
   value: string | number;
-  iconValue?: string;
   onChange: Function;
-  onPressIcon?: Function;
-  showPassword?: boolean;
+  passwordMode?: boolean;
 }): JSX.Element => {
+  const [showPassword, setShowPassword] = React.useState(false);
+
   return (
     <InputContainer>
       <Placeholder>{placeholderValue}</Placeholder>
       <ValueContainer>
-        <ValueField onChangeText={onChange} secureTextEntry={!!showPassword}>
+        <ValueField onChangeText={onChange} secureTextEntry={!showPassword}>
           {value}
         </ValueField>
-        {iconValue && (
-          <IconContainer onPress={onPressIcon}>
-            <MaterialCommunityIcons name={iconValue} size={24} color={colors.grey} />
+        {passwordMode && (
+          <IconContainer onPress={() => setShowPassword(!showPassword)}>
+            <MaterialCommunityIcons
+              name={showPassword ? passwordIcons.show : passwordIcons.hide}
+              size={24}
+              color={colors.grey}
+            />
           </IconContainer>
         )}
       </ValueContainer>

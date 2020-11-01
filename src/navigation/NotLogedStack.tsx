@@ -6,7 +6,7 @@ import LoginScreen from 'containers/LoginScreen';
 
 const Stack = createStackNavigator();
 
-const NotLogedStack = () => {
+const NotLogedStack = (): JSX.Element => {
   return (
     <>
       <Stack.Navigator screenOptions={mainNavigatorOptions}>

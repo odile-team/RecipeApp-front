@@ -4,7 +4,7 @@ export type USER_ACTIONS_TYPE = {
 
 export const USER_ACTIONS: USER_ACTIONS_TYPE = {
   UPDATE: 'USER_ACTIONS/UPDATE',
-}git ;
+};
 
 export interface UpdateUserAction {
   type: string;

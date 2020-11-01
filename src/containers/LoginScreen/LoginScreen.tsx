@@ -55,7 +55,7 @@ const LoginScreen = (): JSX.Element => {
     setFormFields((prev) => ({ ...prev, [key]: value }));
 
   return (
-    <LoginContainer>
+    <LoginContainer testID="LoginTestId">
       {isLoading && (
         <FullScreenLayer>
           <Loader />
@@ -63,7 +63,7 @@ const LoginScreen = (): JSX.Element => {
       )}
       <FormContainer signUp={signUp}>
         <>
-          <Title>{text.title}</Title>
+          <Title testID="LoginTitle">{text.title}</Title>
           {Object.keys(formFields).map((key: string) => {
             const props = assignProps(key);
             return (
@@ -77,6 +77,7 @@ const LoginScreen = (): JSX.Element => {
             );
           })}
           <Button
+            testID="validateButton"
             text={text.title}
             onPress={async () => {
               setIsLoading(true);
@@ -85,7 +86,11 @@ const LoginScreen = (): JSX.Element => {
             }}
           />
           <BottomText>
-            <ButtonText text={text.ChangeButton} onPress={() => setSignUp(!signUp)} />
+            <ButtonText
+              testID="switchLoginScreen"
+              text={text.ChangeButton}
+              onPress={() => setSignUp(!signUp)}
+            />
           </BottomText>
         </>
       </FormContainer>

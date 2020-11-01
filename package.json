@@ -1,19 +1,31 @@
 {
     "main": "node_modules/expo/AppEntry.js",
     "scripts": {
+        "_install": "yarn install && sh setup.sh",
         "start": "expo start",
         "android": "expo start --android",
         "ios": "expo start --ios",
         "web": "expo start --web",
         "eject": "expo eject",
         "postinstall": "husky install",
-        "test": "jest",
+        "test": "node_modules/.bin/jest tests/**/*.test.ts",
         "prettier:write": "prettier --write **/*.{ts,tsx,json}",
         "prettier": "prettier **/*.{ts,tsx,json}",
-        "lint": "eslint . --ext .ts"
+        "lint": "eslint . --ext .ts",
+        "e2e": "detox test"
     },
     "jest": {
-        "preset": "react-native"
+        "preset": "jest-expo"
+    },
+    "detox": {
+        "test-runner": "jest",
+        "configurations": {
+            "ios.sim": {
+                "binaryPath": "bin/Exponent.app",
+                "type": "ios.simulator",
+                "name": "iPhone 11"
+            }
+        }
     },
     "dependencies": {
         "@emotion/core": "^10.0.35",
@@ -65,6 +77,8 @@
         "@types/react-redux": "^7.1.9",
         "@typescript-eslint/eslint-plugin": "^4.6.0",
         "@typescript-eslint/parser": "^4.6.0",
+        "detox": "^17.10.6",
+        "detox-expo-helpers": "^0.6.0",
         "eslint": "^7.12.1",
         "eslint-config-airbnb": "^18.2.0",
         "eslint-config-universe": "^6.0.0",
@@ -73,7 +87,10 @@
         "eslint-plugin-prettier": "^3.1.4",
         "eslint-plugin-react": "^7.21.5",
         "eslint-plugin-react-hooks": "^4.2.0",
+        "expo-detox-hook": "^1.0.10",
         "husky": "^5.0.0-beta.0",
+        "jest-circus": "^26.6.1",
+        "jest-expo": "^39.0.0",
         "pinst": "^2.0.0",
         "typescript": "^4.0.3"
     },

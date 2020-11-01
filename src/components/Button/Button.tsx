@@ -2,9 +2,17 @@ import React from 'react';
 
 import { ButtonContainer, ButtonText } from './style';
 
-const Button = ({ text, onPress }: { text: string; onPress: Function }): JSX.Element => {
+const Button = ({
+  text,
+  onPress,
+  testID,
+}: {
+  text: string;
+  onPress: Function;
+  testID?: string;
+}): JSX.Element => {
   return (
-    <ButtonContainer onPress={onPress}>
+    <ButtonContainer onPress={onPress} testID={testID}>
       <ButtonText>{text}</ButtonText>
     </ButtonContainer>
   );

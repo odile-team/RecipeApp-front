@@ -48,8 +48,6 @@ const Tab = ({
     return { width };
   });
 
-  console.log(testID);
-
   return (
     <Container
       testID={testID}

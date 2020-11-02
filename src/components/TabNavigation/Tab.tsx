@@ -23,10 +23,12 @@ const Tab = ({
   label,
   accessibilityState,
   onPress,
+  testID,
 }: {
   label: Index;
   accessibilityState: any;
   onPress: any;
+  testID: string;
 }): JSX.Element => {
   const focused: boolean = accessibilityState.selected;
   const icon: string = icons[label];
@@ -48,6 +50,7 @@ const Tab = ({
 
   return (
     <Container
+      testID={testID}
       onPress={() => {
         onPress();
       }}

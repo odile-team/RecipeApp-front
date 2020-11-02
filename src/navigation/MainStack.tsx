@@ -5,7 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import LogedStack from './LogedStack';
 import NotLogedStack from './NotLogedStack';
 
-const isSignIn: boolean = false;
+const isSignIn: boolean = true;
 
 const MainStack = () => {
   return <NavigationContainer>{isSignIn ? <LogedStack /> : <NotLogedStack />}</NavigationContainer>;

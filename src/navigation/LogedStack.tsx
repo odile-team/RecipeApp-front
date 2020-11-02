@@ -35,6 +35,7 @@ const LogedStack = () => {
                 label={RECIPE}
                 accessibilityState={accessibilityState}
                 onPress={onPress}
+                testID="RecipeButton"
               />
             ),
           }}
@@ -48,6 +49,7 @@ const LogedStack = () => {
                 label={SEARCH}
                 accessibilityState={accessibilityState}
                 onPress={onPress}
+                testID="SearchButton"
               />
             ),
           }}
@@ -61,6 +63,7 @@ const LogedStack = () => {
                 label={GROCERY}
                 accessibilityState={accessibilityState}
                 onPress={onPress}
+                testID="GroceryButton"
               />
             ),
           }}
@@ -74,6 +77,7 @@ const LogedStack = () => {
                 label={PROFILE}
                 accessibilityState={accessibilityState}
                 onPress={onPress}
+                testID="ProfileButton"
               />
             ),
           }}

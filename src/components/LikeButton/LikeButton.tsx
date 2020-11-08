@@ -1,11 +1,34 @@
 import React from 'react';
-import { FontAwesome } from '@expo/vector-icons';
-import { LikeContainer } from './styles';
+import { Animated } from 'react-native';
+import LottieView from 'lottie-react-native';
 
-const LikeButton = ({}) => {
+import { DURATION, END_VALUE, START_VALUE } from './config';
+import { ButtonContainer, styles, LikedText, LikeContainer } from './styles';
+import { LikeProps } from './types';
+
+const LikeButton = ({ isLiked, onPress }: LikeProps): JSX.Element => {
+  const progressValue = new Animated.Value(isLiked ? END_VALUE : START_VALUE);
+
+  const press = () => {
+    Animated.timing(progressValue, {
+      toValue: isLiked ? START_VALUE : END_VALUE,
+      duration: DURATION,
+      useNativeDriver: true,
+    }).start(() => {
+      onPress();
+    });
+  };
+
   return (
     <LikeContainer>
-      <FontAwesome name="heart-o" size={24} color="white" />
+      <ButtonContainer onPress={press}>
+        <LottieView
+          style={styles.Lottie}
+          source={require('assets/like.json')}
+          progress={progressValue}
+        />
+      </ButtonContainer>
+      {isLiked && <LikedText>Saved !</LikedText>}
     </LikeContainer>
   );
 };

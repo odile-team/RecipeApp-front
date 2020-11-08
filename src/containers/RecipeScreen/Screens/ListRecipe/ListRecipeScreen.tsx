@@ -13,8 +13,13 @@ import { ScrollView } from 'react-native-gesture-handler';
 
 const ListRecipeScreen: FunctionComponent<ListRecipeProps> = () => {
   const [whoFocused, setWhoFocused] = React.useState(Titles.breakfast);
+  const [isLiked, setIsLiked] = React.useState(false);
   const height = Dimensions.get('window').height;
   const styles = getStyles(height);
+
+  const onPress = () => {
+    setIsLiked(!isLiked);
+  };
 
   return (
     <SafeAreaView>
@@ -34,39 +39,12 @@ const ListRecipeScreen: FunctionComponent<ListRecipeProps> = () => {
         <View style={styles.ScrollViewContainer}>
           <ScrollView>
             <ListCardsContainer>
-              <RecipeCards />
-              <RecipeCards />
-              <RecipeCards />
-              <RecipeCards />
-              <RecipeCards />
-              <RecipeCards />
-              <RecipeCards />
-              <RecipeCards />
-              <RecipeCards />
-              <RecipeCards />
-              <RecipeCards />
-              <RecipeCards />
-              <RecipeCards />
-              <RecipeCards />
-              <RecipeCards />
-              <RecipeCards />
-              <RecipeCards />
-              <RecipeCards />
-              <RecipeCards />
-              <RecipeCards />
-              <RecipeCards />
-              <RecipeCards />
-              <RecipeCards />
-              <RecipeCards />
-              <RecipeCards />
-              <RecipeCards />
-              <RecipeCards />
-              <RecipeCards />
-              <RecipeCards />
-              <RecipeCards />
-              <RecipeCards />
-              <RecipeCards />
-              <RecipeCards />
+              <RecipeCards isLiked={isLiked} onPress={onPress} />
+              <RecipeCards isLiked={isLiked} onPress={onPress} />
+              <RecipeCards isLiked={isLiked} onPress={onPress} />
+              <RecipeCards isLiked={isLiked} onPress={onPress} />
+              <RecipeCards isLiked={isLiked} onPress={onPress} />
+              <RecipeCards isLiked={isLiked} onPress={onPress} />
             </ListCardsContainer>
           </ScrollView>
         </View>

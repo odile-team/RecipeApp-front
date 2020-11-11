@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import { TitleContainer, DescContainer, DescriptionContainer } from './styles';
 import { DescriptionProps } from './types';
+import { Context } from '../../ListRecipeScreen';
 
-const Description = ({ title, desc }: DescriptionProps): JSX.Element => {
+const Description = ({ index }: DescriptionProps): JSX.Element => {
+  const ContextValues = useContext(Context);
+  const { title, desc } = ContextValues[index];
   return (
     <DescriptionContainer>
       <TitleContainer numberOfLines={1}>{title}</TitleContainer>

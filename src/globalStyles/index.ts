@@ -14,5 +14,5 @@ export const SafeAreaView = styled.View`
   padding-top: 15%;
   height: 100%;
   width: 100%;
-  background-color: ${colors.lightgrey};
+  background-color: ${colors.white};
 `;

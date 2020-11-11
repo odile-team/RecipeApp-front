@@ -1,4 +1,3 @@
 export interface DescriptionProps {
-  title: string;
-  desc: string;
+  index: number;
 }

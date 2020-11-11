@@ -1,21 +1,44 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import LikeButton from 'components/LikeButton/LikeButton';
 import CardsPicture from '../CardsPicture/CardsPicture';
 import Description from '../Description/Description';
 
-import { CardsContainer, BottomCardContainer, LikeContainer } from './style';
+import { CardsContainer, BottomCardContainer, LikeContainer, DescContainer } from './style';
+import { Context } from '../../ListRecipeScreen';
+import { RecipeCardsProps } from './types';
+import { Dimensions, TouchableWithoutFeedback } from 'react-native';
 
-const RecipeCards = ({ isLiked, onPress }): JSX.Element => {
+const RecipeCards = ({ onPress, index, onNavigate }: RecipeCardsProps): JSX.Element => {
+  const contextValues = useContext(Context);
+  const { uri, isLiked, title } = contextValues[index];
+
+  const height = Dimensions.get('window').height;
+
+  const press = () => {
+    onPress(index);
+  };
+
+  const navigate = () => {
+    onNavigate(index, {
+      title: title,
+      uri: uri,
+    });
+  };
+
   return (
-    <CardsContainer>
-      <CardsPicture />
-      <BottomCardContainer>
-        <LikeContainer>
-          <LikeButton isLiked={isLiked} onPress={onPress} />
-        </LikeContainer>
-        <Description title="Sliced beef" desc="Meat" />
-      </BottomCardContainer>
-    </CardsContainer>
+    <TouchableWithoutFeedback onPress={navigate}>
+      <CardsContainer height={height}>
+        <CardsPicture uri={uri} />
+        <BottomCardContainer>
+          <DescContainer>
+            <Description index={index} />
+          </DescContainer>
+          <LikeContainer>
+            <LikeButton isLiked={isLiked} onPress={press} />
+          </LikeContainer>
+        </BottomCardContainer>
+      </CardsContainer>
+    </TouchableWithoutFeedback>
   );
 };
 

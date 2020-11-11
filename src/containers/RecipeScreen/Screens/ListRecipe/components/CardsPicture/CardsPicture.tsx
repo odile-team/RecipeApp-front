@@ -2,10 +2,14 @@ import React from 'react';
 
 import { CardPictureContainer, PictureContainer } from './style';
 
-const CardsPicture = ({}) => {
+const CardsPicture = ({ uri }) => {
   return (
     <CardPictureContainer>
-      <PictureContainer />
+      <PictureContainer
+        source={{
+          uri: uri,
+        }}
+      />
     </CardPictureContainer>
   );
 };

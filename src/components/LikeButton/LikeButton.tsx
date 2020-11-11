@@ -3,7 +3,7 @@ import { Animated } from 'react-native';
 import LottieView from 'lottie-react-native';
 
 import { DURATION, END_VALUE, START_VALUE } from './config';
-import { ButtonContainer, styles, LikedText, LikeContainer } from './styles';
+import { ButtonContainer, styles, LikeContainer } from './styles';
 import { LikeProps } from './types';
 
 const LikeButton = ({ isLiked, onPress }: LikeProps): JSX.Element => {
@@ -28,7 +28,6 @@ const LikeButton = ({ isLiked, onPress }: LikeProps): JSX.Element => {
           progress={progressValue}
         />
       </ButtonContainer>
-      {isLiked && <LikedText>Saved !</LikedText>}
     </LikeContainer>
   );
 };

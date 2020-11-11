@@ -3,7 +3,6 @@ import styled from '@emotion/native';
 import { colors } from 'globalStyles/color';
 
 export const DescriptionContainer = styled.View`
-  top: -5;
   padding-left: 10%;
   padding-right: 10%;
 `;

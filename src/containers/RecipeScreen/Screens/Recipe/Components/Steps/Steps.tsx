@@ -1,9 +1,14 @@
 import React from 'react';
 
-import { StepsContainer } from './styles';
+import { StepsContainer, StepTitle, StepDesc } from './styles';
 
-const Steps = ({ step, index }): JSX.Element => {
-  return <StepsContainer></StepsContainer>;
+const Steps = ({ step, order }): JSX.Element => {
+  return (
+    <StepsContainer>
+      <StepTitle>Step {order}</StepTitle>
+      <StepDesc>{step}</StepDesc>
+    </StepsContainer>
+  );
 };
 
 export default Steps;

@@ -1,9 +1,13 @@
 import React from 'react';
 
-import { CategorieContainer } from './styles';
+import { CategorieContainer, CategorieText } from './styles';
 
 const Categorie = ({ category }): JSX.Element => {
-  return <CategorieContainer>{category}</CategorieContainer>;
+  return (
+    <CategorieContainer>
+      <CategorieText>{category}</CategorieText>
+    </CategorieContainer>
+  );
 };
 
 export default Categorie;

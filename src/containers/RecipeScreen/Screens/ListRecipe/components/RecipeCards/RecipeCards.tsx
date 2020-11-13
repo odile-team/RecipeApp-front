@@ -22,6 +22,7 @@ const RecipeCards = ({ onPress, index, onNavigate }: RecipeCardsProps): JSX.Elem
     onNavigate(index, {
       title: title,
       uri: uri,
+      isLiked: isLiked,
     });
   };
 

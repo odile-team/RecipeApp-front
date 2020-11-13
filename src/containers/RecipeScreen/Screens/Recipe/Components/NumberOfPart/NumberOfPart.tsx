@@ -1,9 +1,20 @@
 import React from 'react';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-import { NumberOfPartContainer } from './styles';
+import { NumberOfPartContainer, NumberOfPartText } from './styles';
+import { colors } from 'globalStyles/color';
 
 const NumberOfPart = ({ parts }): JSX.Element => {
-  return <NumberOfPartContainer>{parts} NumberOfPart</NumberOfPartContainer>;
+  const plural = parts > 1 ? 's' : '';
+
+  return (
+    <NumberOfPartContainer>
+      <MaterialCommunityIcons name="silverware-fork-knife" size={17} color={colors.mainBlue} />
+      <NumberOfPartText>
+        for {parts} people{plural}
+      </NumberOfPartText>
+    </NumberOfPartContainer>
+  );
 };
 
 export default NumberOfPart;

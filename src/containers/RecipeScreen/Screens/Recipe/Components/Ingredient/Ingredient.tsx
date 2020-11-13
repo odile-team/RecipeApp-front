@@ -1,11 +1,14 @@
 import React from 'react';
 
-import { IngredientContainer, IngredientText } from './styles';
+import { IngredientContainer, IngredientText, Quantity } from './styles';
 
-const Ingredient = ({ ingredient }): JSX.Element => {
+const Ingredient = ({ quantity, unit, name }): JSX.Element => {
   return (
     <IngredientContainer>
-      <IngredientText>{ingredient}</IngredientText>
+      <IngredientText>
+        <Quantity>{quantity}</Quantity> {unit !== 'sans unité' ? unit + ' de ' : ''}
+        {name}
+      </IngredientText>
     </IngredientContainer>
   );
 };

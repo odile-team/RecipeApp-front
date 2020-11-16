@@ -2,10 +2,12 @@ import React from 'react';
 
 import { StepsContainer, StepTitle, StepDesc } from './styles';
 
-const Steps = ({ step, order }): JSX.Element => {
+import { RecipeStepType } from '../RecipeSteps/types';
+
+const Steps = ({ step, order }: RecipeStepType): JSX.Element => {
   return (
     <StepsContainer>
-      <StepTitle>Step {order}</StepTitle>
+      <StepTitle>Étape {order}</StepTitle>
       <StepDesc>{step}</StepDesc>
     </StepsContainer>
   );

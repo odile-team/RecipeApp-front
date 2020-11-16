@@ -1,8 +1,8 @@
 import { TitlesTypesFromIndex } from './types';
 
 export const Titles: TitlesTypesFromIndex = {
-  breakfast: 'Breakfast',
-  lunch: 'Lunch',
+  matin: 'Matin',
+  midi: 'Midi',
   snack: 'Snack',
-  diner: 'Diner',
+  diner: 'Soir',
 };

@@ -1,36 +1,37 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useState, useEffect } from 'react';
+import { SharedElement } from 'react-navigation-shared-element';
+import { ScrollView } from 'react-native-gesture-handler';
+import { Dimensions } from 'react-native';
+import Animated, {
+  useAnimatedStyle,
+  useSharedValue,
+  useDerivedValue,
+  withSpring,
+} from 'react-native-reanimated';
+import { mix } from 'react-native-redash';
 
 import {
   DescriptionContainer,
   PictureContainer,
-  HeadContainer,
-  MainHeadPart,
-  Title,
-  CategoriesContainer,
-  LikeContainer,
-  InfoContainer,
   PartStepsContainer,
-  OtherInfosContainer,
-  SubTitle,
-  SubContainer,
   ScrollContainer,
+  styles,
 } from './styles';
 
-import Categorie from './Components/Categorie/Categorie';
-import Stars from './Components/Stars/Stars';
-import LikeNumber from './Components/LikeNumber/LikeNumber';
-import Steps from './Components/Steps/Steps';
-import Time from './Components/Time/Time';
-import NumberOfPart from './Components/NumberOfPart/NumberOfPart';
-import Ingredient from './Components/Ingredient/Ingredient';
+import { colors } from 'globalStyles/color';
 
-import LikeButton from 'components/LikeButton/LikeButton';
 import BreakLine from 'components/BreakLine/BreakLine';
-import { ScrollView } from 'react-native-gesture-handler';
-import { View } from 'react-native';
+import BackView from 'components/BackView/BackView';
+import Head from './Components/Head/Head';
+import CommunityInfo from './Components/CommunityInfo/CommunityInfo';
+import RecipeInfo from './Components/RecipeInfo/RecipeInfo';
+import Ingredients from './Components/Ingredients/Ingredients';
+import RecipeSteps from './Components/RecipeSteps/RecipeSteps';
 
 interface RecipeProps {
   route: any;
+  sharedElements: any;
+  navigation: any;
 }
 
 const ingredients = [
@@ -77,73 +78,72 @@ const steps = [
   },
 ];
 
-const categories = ['BreakFast', 'Cereals'];
+const categories = ['Entrée', 'Poisson'];
 
-const RecipeScreen: FunctionComponent<RecipeProps> = ({ route }) => {
-  const { title, uri, isLiked } = route.params;
+const RecipeScreen: FunctionComponent<RecipeProps> = ({ navigation, route }) => {
+  const { title, uri, isLiked, index } = route.params;
+  const windowHeight: number = Dimensions.get('window').height;
+
+  const [loading, setLoading] = React.useState(true);
+  const [loadAnimation, setLoadAnimation] = React.useState(true);
+  const [yPosition, setYPosition] = useState(0);
+  const isScroll: Animated.SharedValue<number> = useSharedValue(yPosition > 10 ? 1 : 0);
+  const isLoad: Animated.SharedValue<number> = useSharedValue(loadAnimation ? 1 : 0);
+  const transition: Animated.SharedValue<number> = useDerivedValue(() =>
+    withSpring(isScroll.value)
+  );
+  const load: Animated.SharedValue<number> = useDerivedValue(() => withSpring(isLoad.value));
+
+  useEffect(() => {
+    setTimeout(() => setLoadAnimation(false), 500);
+    setTimeout(() => setLoading(false), 1700);
+  }, []);
+
+  const animatedStyle = useAnimatedStyle(() => {
+    const top = mix(
+      loading ? load.value : transition.value,
+      (windowHeight * 35) / 100,
+      loading ? (windowHeight * 100) / 100 : (windowHeight * 10) / 100
+    );
+    return { top };
+  });
 
   return (
-    <View>
-      <PictureContainer
-        source={{
-          uri: uri,
-        }}
-      />
-      <ScrollContainer>
-        <ScrollView>
-          <DescriptionContainer>
-            {/* cut HeadContainer */}
-            <HeadContainer>
-              {/* cut MainHeadPart */}
-              <MainHeadPart>
-                <Title>{title}</Title>
-                <CategoriesContainer>
-                  {categories.map((category) => (
-                    <Categorie category={category} />
-                  ))}
-                </CategoriesContainer>
-              </MainHeadPart>
-              <LikeContainer>
-                <LikeButton onPress={() => {}} isLiked={isLiked} />
-              </LikeContainer>
-            </HeadContainer>
-            {/* cut infoContainer */}
-            <InfoContainer>
-              <Stars stars={4} />
-              <LikeNumber like={234} />
-            </InfoContainer>
-            <BreakLine />
-            {/* cut PartStepsContainer */}
-            <PartStepsContainer>
-              {/* Cut OtherInfosContainer */}
-              <OtherInfosContainer>
-                <Time time={25} />
-                <NumberOfPart parts={2} />
-              </OtherInfosContainer>
-              {/* ?? cut Ingredients */}
-              <SubContainer>
-                <SubTitle>INGREDIENTS</SubTitle>
-                {ingredients.map((ingredient) => (
-                  <Ingredient
-                    quantity={ingredient.quantity}
-                    unit={ingredient.unit}
-                    name={ingredient.name}
-                  />
-                ))}
-              </SubContainer>
-              {/* ?? cut Steps */}
-              <SubContainer>
-                <SubTitle>STEPS</SubTitle>
-                {steps.map((step) => (
-                  <Steps step={step.step} order={step.order} />
-                ))}
-              </SubContainer>
-            </PartStepsContainer>
-          </DescriptionContainer>
-        </ScrollView>
-      </ScrollContainer>
-    </View>
+    <BackView onPress={() => navigation.goBack()} color={colors.mainBlue}>
+      <SharedElement id={`image_${index}`} style={{ width: '100%', height: '100%' }}>
+        <PictureContainer
+          source={{
+            uri: uri,
+          }}
+        />
+      </SharedElement>
+      <Animated.View style={[styles.AnimatedContainer, animatedStyle]}>
+        <ScrollContainer>
+          <ScrollView
+            scrollEventThrottle={100}
+            onScroll={(e) => {
+              setYPosition(e.nativeEvent.contentOffset.y);
+            }}
+          >
+            <DescriptionContainer>
+              <Head title={title} categories={categories} isLiked={isLiked} onLike={() => {}} />
+              <CommunityInfo stars={4.2} like={234} position={2} />
+              <BreakLine />
+              <PartStepsContainer>
+                <RecipeInfo time={25} parts={2} position={3} />
+                <Ingredients ingredients={ingredients} position={4} />
+                <RecipeSteps steps={steps} position={5} />
+              </PartStepsContainer>
+            </DescriptionContainer>
+          </ScrollView>
+        </ScrollContainer>
+      </Animated.View>
+    </BackView>
   );
 };
+
+RecipeScreen.sharedElements = (route: any) => [
+  { id: `image_${route.params.index}`, animation: 'move', resize: 'auto', align: 'auto' },
+];
 
 export default RecipeScreen;

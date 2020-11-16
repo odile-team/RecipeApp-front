@@ -2,7 +2,9 @@ import React from 'react';
 
 import { IngredientContainer, IngredientText, Quantity } from './styles';
 
-const Ingredient = ({ quantity, unit, name }): JSX.Element => {
+import { IngredientsType } from '../Ingredients/types';
+
+const Ingredient = ({ quantity, unit, name }: IngredientsType): JSX.Element => {
   return (
     <IngredientContainer>
       <IngredientText>

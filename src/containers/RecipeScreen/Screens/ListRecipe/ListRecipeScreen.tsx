@@ -4,127 +4,128 @@ import { Dimensions, View } from 'react-native';
 import CategoriesTitle from './components/CategoriesTitle/CategoriesTitle';
 
 import { SafeAreaView } from 'globalStyles/index';
-import { TitleContainer, ListCardsContainer, getStyles } from './style';
+import { TitleContainer, getStyles } from './style';
 
 import { ListRecipeProps } from './types';
 import { Titles } from './config';
 import RecipeCards from './components/RecipeCards/RecipeCards';
 import { FlatList } from 'react-native-gesture-handler';
+import FadeInEntrance from 'components/FadeInEntrance/FadeInEntrance';
 
 const dummy = {
-  Breakfast: [
+  Matin: [
     {
       title: 'Muesli',
-      desc: 'Cereals',
+      desc: 'Céréales',
       uri: 'https://www.notretemps.com/images/articles/cuisine/recettes/muesli-recette.jpeg',
       isLiked: false,
     },
     {
       title: 'Muesli',
-      desc: 'Cereals',
+      desc: 'Céréales',
       uri: 'https://www.notretemps.com/images/articles/cuisine/recettes/muesli-recette.jpeg',
       isLiked: false,
     },
     {
       title: 'Muesli',
-      desc: 'Cereals',
+      desc: 'Céréales',
       uri: 'https://www.notretemps.com/images/articles/cuisine/recettes/muesli-recette.jpeg',
       isLiked: false,
     },
     {
       title: 'Muesli',
-      desc: 'Cereals',
+      desc: 'Céréales',
       uri: 'https://www.notretemps.com/images/articles/cuisine/recettes/muesli-recette.jpeg',
       isLiked: false,
     },
     {
       title: 'Muesli',
-      desc: 'Cereals',
+      desc: 'Céréales',
       uri: 'https://www.notretemps.com/images/articles/cuisine/recettes/muesli-recette.jpeg',
       isLiked: false,
     },
     {
       title: 'Muesli',
-      desc: 'Cereals',
+      desc: 'Céréales',
       uri: 'https://www.notretemps.com/images/articles/cuisine/recettes/muesli-recette.jpeg',
       isLiked: false,
     },
     {
       title: 'Muesli',
-      desc: 'Cereals',
+      desc: 'Céréales',
       uri: 'https://www.notretemps.com/images/articles/cuisine/recettes/muesli-recette.jpeg',
       isLiked: false,
     },
     {
       title: 'Muesli',
-      desc: 'Cereals',
+      desc: 'Céréales',
       uri: 'https://www.notretemps.com/images/articles/cuisine/recettes/muesli-recette.jpeg',
       isLiked: false,
     },
     {
       title: 'Muesli',
-      desc: 'Cereals',
+      desc: 'Céréales',
       uri: 'https://www.notretemps.com/images/articles/cuisine/recettes/muesli-recette.jpeg',
       isLiked: false,
     },
     {
       title: 'Muesli',
-      desc: 'Cereals',
+      desc: 'Céréales',
       uri: 'https://www.notretemps.com/images/articles/cuisine/recettes/muesli-recette.jpeg',
       isLiked: false,
     },
     {
       title: 'Muesli',
-      desc: 'Cereals',
+      desc: 'Céréales',
       uri: 'https://www.notretemps.com/images/articles/cuisine/recettes/muesli-recette.jpeg',
       isLiked: false,
     },
     {
       title: 'Muesli',
-      desc: 'Cereals',
+      desc: 'Céréales',
       uri: 'https://www.notretemps.com/images/articles/cuisine/recettes/muesli-recette.jpeg',
       isLiked: false,
     },
   ],
-  Lunch: [
+  Midi: [
     {
-      title: 'Sliced Beef',
-      desc: 'Meat',
+      title: 'Tranches de steak à la roquette',
+      desc: 'Viande',
       uri:
         'https://images.eatthismuch.com/site_media/img/45608_ldementhon_44c4211c-7457-4c40-b8da-28ec25b92b0d.jpg',
       isLiked: false,
     },
     {
-      title: 'Sliced Beef',
-      desc: 'Meat',
+      title: 'Tranches de steak à la roquette',
+      desc: 'Viande',
       uri:
         'https://images.eatthismuch.com/site_media/img/45608_ldementhon_44c4211c-7457-4c40-b8da-28ec25b92b0d.jpg',
       isLiked: false,
     },
     {
-      title: 'Sliced Beef',
-      desc: 'Meat',
+      title: 'Tranches de steak à la roquette',
+      desc: 'Viande',
       uri:
         'https://images.eatthismuch.com/site_media/img/45608_ldementhon_44c4211c-7457-4c40-b8da-28ec25b92b0d.jpg',
       isLiked: false,
     },
     {
-      title: 'Sliced Beef',
-      desc: 'Meat',
+      title: 'Tranches de steak à la roquette',
+      desc: 'Viande',
       uri:
         'https://images.eatthismuch.com/site_media/img/45608_ldementhon_44c4211c-7457-4c40-b8da-28ec25b92b0d.jpg',
       isLiked: false,
     },
     {
-      title: 'Sliced Beef',
-      desc: 'Meat',
+      title: 'Tranches de steak à la roquette',
+      desc: 'Viande',
       uri:
         'https://images.eatthismuch.com/site_media/img/45608_ldementhon_44c4211c-7457-4c40-b8da-28ec25b92b0d.jpg',
       isLiked: false,
     },
     {
-      title: 'Sliced Beef',
-      desc: 'Meat',
+      title: 'Tranches de steak à la roquette',
+      desc: 'Viande',
       uri:
         'https://images.eatthismuch.com/site_media/img/45608_ldementhon_44c4211c-7457-4c40-b8da-28ec25b92b0d.jpg',
       isLiked: false,
@@ -132,98 +133,92 @@ const dummy = {
   ],
   Snack: [
     {
-      title: 'Butter biscuit',
+      title: 'Sablé au beurre',
       desc: 'Biscuit',
       uri:
         'https://www.bakedbyanintrovert.com/wp-content/uploads/2018/10/Basic-Butter-Cookies-Recipe-Image-735x735.jpg',
       isLiked: false,
     },
     {
-      title: 'Butter biscuit',
+      title: 'Sablé au beurre',
       desc: 'Biscuit',
       uri:
         'https://www.bakedbyanintrovert.com/wp-content/uploads/2018/10/Basic-Butter-Cookies-Recipe-Image-735x735.jpg',
       isLiked: false,
     },
     {
-      title: 'Butter biscuit',
+      title: 'Sablé au beurre',
       desc: 'Biscuit',
       uri:
         'https://www.bakedbyanintrovert.com/wp-content/uploads/2018/10/Basic-Butter-Cookies-Recipe-Image-735x735.jpg',
       isLiked: false,
     },
     {
-      title: 'Butter biscuit',
+      title: 'Sablé au beurre',
       desc: 'Biscuit',
       uri:
         'https://www.bakedbyanintrovert.com/wp-content/uploads/2018/10/Basic-Butter-Cookies-Recipe-Image-735x735.jpg',
       isLiked: false,
     },
     {
-      title: 'Butter biscuit',
+      title: 'Sablé au beurre',
       desc: 'Biscuit',
       uri:
         'https://www.bakedbyanintrovert.com/wp-content/uploads/2018/10/Basic-Butter-Cookies-Recipe-Image-735x735.jpg',
       isLiked: false,
     },
     {
-      title: 'Butter biscuit',
+      title: 'Sablé au beurre',
       desc: 'Biscuit',
       uri:
         'https://www.bakedbyanintrovert.com/wp-content/uploads/2018/10/Basic-Butter-Cookies-Recipe-Image-735x735.jpg',
       isLiked: false,
     },
   ],
-  Diner: [
+  Soir: [
     {
-      title: 'Sliced Beef',
-      desc: 'Meat',
-      uri:
-        'https://images.eatthismuch.com/site_media/img/45608_ldementhon_44c4211c-7457-4c40-b8da-28ec25b92b0d.jpg',
+      title: 'Cake au saumon fumé et citron',
+      desc: 'Poisson',
+      uri: 'https://kiwings-images-prod.s3-eu-west-1.amazonaws.com/recipes/521f11245c8ae.jpeg',
       isLiked: false,
     },
     {
-      title: 'Sliced Beef',
-      desc: 'Meat',
-      uri:
-        'https://images.eatthismuch.com/site_media/img/45608_ldementhon_44c4211c-7457-4c40-b8da-28ec25b92b0d.jpg',
+      title: 'Cake au saumon fumé et citron',
+      desc: 'Poisson',
+      uri: 'https://kiwings-images-prod.s3-eu-west-1.amazonaws.com/recipes/521f11245c8ae.jpeg',
       isLiked: false,
     },
     {
-      title: 'Sliced Beef',
-      desc: 'Meat',
-      uri:
-        'https://images.eatthismuch.com/site_media/img/45608_ldementhon_44c4211c-7457-4c40-b8da-28ec25b92b0d.jpg',
+      title: 'Cake au saumon fumé et citron',
+      desc: 'Poisson',
+      uri: 'https://kiwings-images-prod.s3-eu-west-1.amazonaws.com/recipes/521f11245c8ae.jpeg',
       isLiked: false,
     },
     {
-      title: 'Sliced Beef',
-      desc: 'Meat',
-      uri:
-        'https://images.eatthismuch.com/site_media/img/45608_ldementhon_44c4211c-7457-4c40-b8da-28ec25b92b0d.jpg',
+      title: 'Cake au saumon fumé et citron',
+      desc: 'Poisson',
+      uri: 'https://kiwings-images-prod.s3-eu-west-1.amazonaws.com/recipes/521f11245c8ae.jpeg',
       isLiked: false,
     },
     {
-      title: 'Sliced Beef',
-      desc: 'Meat',
-      uri:
-        'https://images.eatthismuch.com/site_media/img/45608_ldementhon_44c4211c-7457-4c40-b8da-28ec25b92b0d.jpg',
+      title: 'Cake au saumon fumé et citron',
+      desc: 'Poisson',
+      uri: 'https://kiwings-images-prod.s3-eu-west-1.amazonaws.com/recipes/521f11245c8ae.jpeg',
       isLiked: false,
     },
     {
-      title: 'Sliced Beef',
-      desc: 'Meat',
-      uri:
-        'https://images.eatthismuch.com/site_media/img/45608_ldementhon_44c4211c-7457-4c40-b8da-28ec25b92b0d.jpg',
+      title: 'Cake au saumon fumé et citron',
+      desc: 'Poisson',
+      uri: 'https://kiwings-images-prod.s3-eu-west-1.amazonaws.com/recipes/521f11245c8ae.jpeg',
       isLiked: false,
     },
   ],
 };
 
-export const Context = createContext(dummy.Breakfast);
+export const Context = createContext(dummy.matin);
 
 const ListRecipeScreen: FunctionComponent<ListRecipeProps> = ({ navigation }) => {
-  const [whoFocused, setWhoFocused] = useState(Titles.breakfast);
+  const [whoFocused, setWhoFocused] = useState(Titles.matin);
   const height = Dimensions.get('window').height;
   const styles = getStyles(height);
   const [data, setData] = useState(dummy[whoFocused]);
@@ -239,7 +234,6 @@ const ListRecipeScreen: FunctionComponent<ListRecipeProps> = ({ navigation }) =>
   };
 
   const onNavigate = (index, props) => {
-    console.log(props);
     navigation.navigate('RecipeScreen', props);
   };
 

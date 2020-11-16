@@ -4,11 +4,10 @@ import { colors } from 'globalStyles/color';
 
 export const DescriptionContainer = styled.View`
   padding-left: 10%;
-  padding-right: 10%;
 `;
 
 export const TitleContainer = styled.Text`
-  font-size: 18;
+  font-size: 15;
   color: ${colors.grey};
   font-weight: 600;
   padding-bottom: 5px;

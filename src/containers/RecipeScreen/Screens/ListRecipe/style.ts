@@ -2,7 +2,6 @@
 import styled from '@emotion/native';
 import { StyleSheet } from 'react-native';
 import { percentOf } from 'utils/percentOf';
-import { Background } from '../../../../components/FullScreenLayer/style';
 
 export const getStyles = (height: number) =>
   StyleSheet.create({

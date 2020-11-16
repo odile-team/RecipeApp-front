@@ -2,7 +2,6 @@
 import styled from '@emotion/native';
 import { colors } from 'globalStyles/color';
 
-// TODO: Change static height
 export const CardsContainer = styled.View`
   height: ${(props) => (props.height * 0.3).toString()};
   width: 46%;

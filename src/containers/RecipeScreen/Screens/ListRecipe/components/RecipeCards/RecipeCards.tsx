@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+
 import LikeButton from 'components/LikeButton/LikeButton';
 import CardsPicture from '../CardsPicture/CardsPicture';
 import Description from '../Description/Description';
@@ -23,13 +24,14 @@ const RecipeCards = ({ onPress, index, onNavigate }: RecipeCardsProps): JSX.Elem
       title: title,
       uri: uri,
       isLiked: isLiked,
+      index: index,
     });
   };
 
   return (
     <TouchableWithoutFeedback onPress={navigate}>
       <CardsContainer height={height}>
-        <CardsPicture uri={uri} />
+        <CardsPicture uri={uri} index={index} />
         <BottomCardContainer>
           <DescContainer>
             <Description index={index} />

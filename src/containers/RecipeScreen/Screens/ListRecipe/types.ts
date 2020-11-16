@@ -4,5 +4,5 @@ export type ListRecipeProps = {
 
 export type NavigatorProps = object;
 
-export type TitlesType = 'Breakfast' | 'Lunch' | 'Snack' | 'Diner' | string;
+export type TitlesType = 'Matin' | 'Midi' | 'Snack' | 'Soir' | string;
 export type TitlesTypesFromIndex = { [k in TitlesType]: string };

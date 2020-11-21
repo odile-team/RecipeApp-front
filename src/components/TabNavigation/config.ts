@@ -1,9 +1,9 @@
-export type Index = 'Recipe' | 'Search' | 'Grocery' | 'Profile' | string;
+export type Index = 'Recettes' | 'Chercher' | 'Liste' | 'Profile' | string;
 type FromIndex = { [k in Index]: string };
 
 export const icons: FromIndex = {
-  Recipe: 'silverware-fork-knife',
-  Search: 'magnify',
-  Grocery: 'format-list-bulleted',
+  Recettes: 'silverware-fork-knife',
+  Chercher: 'magnify',
+  Liste: 'format-list-bulleted',
   Profile: 'account',
 };

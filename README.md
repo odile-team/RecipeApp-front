@@ -1,7 +1,13 @@
 # RecipeApp-front
 
 ## Lancement
+
 ```yarn _install && yarn ios || yarn android```
+
+Run E2E
+
+```yarn e2e```
+
 
 
 [![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-orange.svg)](https://sonarcloud.io/dashboard?id=odile-team_RecipeApp-front)

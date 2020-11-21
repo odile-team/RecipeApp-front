@@ -1,4 +1,4 @@
-export const SEARCH = 'Search';
-export const RECIPE = 'Recipe';
-export const GROCERY = 'Grocery';
+export const SEARCH = 'Chercher';
+export const RECIPE = 'Recettes';
+export const GROCERY = 'Liste';
 export const PROFILE = 'Profile';

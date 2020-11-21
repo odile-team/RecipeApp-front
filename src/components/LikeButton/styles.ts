@@ -1,7 +1,6 @@
 // @ts-ignore
 import styled from '@emotion/native';
 import { StyleSheet } from 'react-native';
-import { colors } from 'globalStyles/color';
 
 export const styles = StyleSheet.create({
   Lottie: {

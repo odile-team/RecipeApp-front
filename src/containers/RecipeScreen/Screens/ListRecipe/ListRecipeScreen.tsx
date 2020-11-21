@@ -10,7 +10,6 @@ import { ListRecipeProps } from './types';
 import { Titles } from './config';
 import RecipeCards from './components/RecipeCards/RecipeCards';
 import { FlatList } from 'react-native-gesture-handler';
-import FadeInEntrance from 'components/FadeInEntrance/FadeInEntrance';
 
 const dummy = {
   Matin: [

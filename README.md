@@ -1,5 +1,7 @@
 # RecipeApp-front
 
+PROJET EN DEVELOPPEMENT, LA QUALITÉ ACTUELLE DU CODE NE SERA PAS LA QUALITÉ FINALE.
+
 ## Lancement
 
 ```yarn _install && yarn ios || yarn android```

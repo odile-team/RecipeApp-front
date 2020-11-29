@@ -1,6 +1,4 @@
-export type ListRecipeProps = {
-  navigation: any;
-};
+export type ListRecipeProps = object;
 
 export type NavigatorProps = object;
 

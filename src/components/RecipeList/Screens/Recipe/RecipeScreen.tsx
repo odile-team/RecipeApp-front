@@ -10,13 +10,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import { mix } from 'react-native-redash';
 
-import {
-  DescriptionContainer,
-  PictureContainer,
-  PartStepsContainer,
-  ScrollContainer,
-  styles,
-} from './styles';
+import { DescriptionContainer, PictureContainer, ScrollContainer, styles } from './styles';
 
 import { colors } from 'globalStyles/color';
 
@@ -30,8 +24,8 @@ import RecipeSteps from './Components/RecipeSteps/RecipeSteps';
 
 interface RecipeProps {
   route: any;
-  sharedElements: any;
   navigation: any;
+  sendRoute?: Function;
 }
 
 const ingredients = [
@@ -80,7 +74,7 @@ const steps = [
 
 const categories = ['Entrée', 'Poisson'];
 
-const RecipeScreen: FunctionComponent<RecipeProps> = ({ navigation, route }) => {
+const RecipeScreen: FunctionComponent<RecipeProps> = ({ navigation, route, sendRoute }) => {
   const { title, uri, isLiked, index } = route.params;
   const windowHeight: number = Dimensions.get('window').height;
 
@@ -99,6 +93,11 @@ const RecipeScreen: FunctionComponent<RecipeProps> = ({ navigation, route }) => 
     setTimeout(() => setLoading(false), 1700);
   }, []);
 
+  const goBack = () => {
+    sendRoute('RecipeList');
+    navigation.goBack();
+  };
+
   const animatedStyle = useAnimatedStyle(() => {
     const top = mix(
       loading ? load.value : transition.value,
@@ -109,11 +108,11 @@ const RecipeScreen: FunctionComponent<RecipeProps> = ({ navigation, route }) => 
   });
 
   return (
-    <BackView onPress={() => navigation.goBack()} color={colors.mainBlue}>
+    <BackView onPress={goBack} color={colors.black}>
       <SharedElement id={`image_${index}`} style={{ width: '100%', height: '100%' }}>
         <PictureContainer
           source={{
-            uri: uri,
+            uri,
           }}
         />
       </SharedElement>
@@ -126,14 +125,21 @@ const RecipeScreen: FunctionComponent<RecipeProps> = ({ navigation, route }) => 
             }}
           >
             <DescriptionContainer>
-              <Head title={title} categories={categories} isLiked={isLiked} onLike={() => {}} />
+              <Head
+                title={title}
+                categories={categories}
+                isLiked={isLiked}
+                onLike={() => {
+                  console.log('like');
+                }}
+              />
               <CommunityInfo stars={4.2} like={234} position={2} />
               <BreakLine />
-              <PartStepsContainer>
+              <>
                 <RecipeInfo time={25} parts={2} position={3} />
                 <Ingredients ingredients={ingredients} position={4} />
                 <RecipeSteps steps={steps} position={5} />
-              </PartStepsContainer>
+              </>
             </DescriptionContainer>
           </ScrollView>
         </ScrollContainer>
@@ -142,8 +148,8 @@ const RecipeScreen: FunctionComponent<RecipeProps> = ({ navigation, route }) => 
   );
 };
 
-RecipeScreen.sharedElements = (route: any) => [
-  { id: `image_${route.params.index}`, animation: 'move', resize: 'auto', align: 'auto' },
-];
+// RecipeScreen.sharedElements = (route: any) => [
+//   { id: `image_${route.params.index}`, animation: 'move', resize: 'auto', align: 'auto' },
+// ];
 
 export default RecipeScreen;

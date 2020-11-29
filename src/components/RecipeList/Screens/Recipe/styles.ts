@@ -8,7 +8,6 @@ export const styles = StyleSheet.create({
     borderRadius: 30,
     backgroundColor: 'white',
     height: '100%',
-    zIndex: 10,
     width: '100%',
   },
 });
@@ -31,8 +30,6 @@ export const ScrollContainer = styled.View`
 export const DescriptionContainer = styled.View`
   padding: 29px;
 `;
-
-export const PartStepsContainer = styled.View``;
 
 export const SubContainer = styled.View`
   padding-top: 7%;

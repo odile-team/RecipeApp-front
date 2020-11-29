@@ -1,6 +1,4 @@
 import React, { FunctionComponent } from 'react';
-import { View, Text } from 'react-native';
-import { createSharedElementStackNavigator } from 'react-navigation-shared-element';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import { defaultNavigatorOptions } from 'navigation/navigationOptions/mainNavigatorOptions';

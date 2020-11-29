@@ -1,9 +1,7 @@
 // @ts-ignore
 import styled from '@emotion/native';
 import { StyleSheet } from 'react-native';
-import { percentOf } from 'utils/percentOf';
-
-export const getStyles = (height: number) =>
+export const getStyles = (): any =>
   StyleSheet.create({
     ScrollViewContainer: {
       backgroundColor: 'white',

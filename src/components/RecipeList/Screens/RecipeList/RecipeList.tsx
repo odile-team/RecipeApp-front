@@ -1,5 +1,5 @@
 import React, { createContext } from 'react';
-import { Dimensions, View } from 'react-native';
+import { View } from 'react-native';
 
 import { getStyles } from './style';
 
@@ -9,15 +9,14 @@ import { RecipeListProps } from './types';
 
 const RecipeList = ({ navigation, data, sendRoute }: RecipeListProps): JSX.Element => {
   const Context = createContext(data);
-  const height = Dimensions.get('window').height;
-  const styles = getStyles(height);
+  const styles = getStyles();
 
   const onPress = () => {
     console.log('record like in the back');
   };
 
   const onNavigate = (index, props) => {
-    sendRoute('RecipeScreen');
+    if (sendRoute) sendRoute('RecipeScreen');
     navigation.navigate('RecipeScreen', props);
   };
 

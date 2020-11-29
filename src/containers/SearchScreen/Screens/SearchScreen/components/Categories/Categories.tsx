@@ -14,7 +14,7 @@ const Categories = ({ categories, navigate }: CategoriesProps): JSX.Element => {
         renderItem={({ item }) => (
           <SingleCategory title={item.title} uri={item.uri} onNavigate={navigate} />
         )}
-        keyExtractor={(categories, index) => `categories_${index}`}
+        keyExtractor={(_, index) => `categories_${index}`}
       />
     </AllCategoriesContainer>
   );

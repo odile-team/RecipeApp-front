@@ -7,10 +7,11 @@ export const styles = (height: number): any =>
   StyleSheet.create({
     navigator: {
       borderRadius: 13,
-      height: percentOf(height, 10),
+      height: percentOf(height, 8),
       backgroundColor: 'white',
       borderTopWidth: 0,
       elevation: 0,
       width: '100%',
+      marginVertical: percentOf(height, 1),
     },
   });

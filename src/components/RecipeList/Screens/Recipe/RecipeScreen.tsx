@@ -81,7 +81,7 @@ const RecipeScreen: FunctionComponent<RecipeProps> = ({ navigation, route, sendR
   const [loading, setLoading] = React.useState(true);
   const [loadAnimation, setLoadAnimation] = React.useState(true);
   const [yPosition, setYPosition] = useState(0);
-  const isScroll: Animated.SharedValue<number> = useSharedValue(yPosition > 10 ? 1 : 0);
+  const isScroll: Animated.SharedValue<number> = useSharedValue(yPosition > 50 ? 1 : 0);
   const isLoad: Animated.SharedValue<number> = useSharedValue(loadAnimation ? 1 : 0);
   const transition: Animated.SharedValue<number> = useDerivedValue(() =>
     withSpring(isScroll.value)
@@ -102,7 +102,7 @@ const RecipeScreen: FunctionComponent<RecipeProps> = ({ navigation, route, sendR
     const top = mix(
       loading ? load.value : transition.value,
       (windowHeight * 35) / 100,
-      loading ? (windowHeight * 100) / 100 : (windowHeight * 10) / 100
+      loading ? (windowHeight * 100) / 100 : (windowHeight * 15) / 100
     );
     return { top };
   });
@@ -119,7 +119,7 @@ const RecipeScreen: FunctionComponent<RecipeProps> = ({ navigation, route, sendR
       <Animated.View style={[styles.AnimatedContainer, animatedStyle]}>
         <ScrollContainer>
           <ScrollView
-            scrollEventThrottle={100}
+            scrollEventThrottle={200}
             onScroll={(e) => {
               setYPosition(e.nativeEvent.contentOffset.y);
             }}
@@ -148,8 +148,8 @@ const RecipeScreen: FunctionComponent<RecipeProps> = ({ navigation, route, sendR
   );
 };
 
-// RecipeScreen.sharedElements = (route: any) => [
-//   { id: `image_${route.params.index}`, animation: 'move', resize: 'auto', align: 'auto' },
-// ];
+RecipeScreen.sharedElements = (route: any) => [
+  { id: `image_${route.params.index}`, animation: 'move', resize: 'auto', align: 'auto' },
+];
 
 export default RecipeScreen;

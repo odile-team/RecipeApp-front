@@ -13,7 +13,7 @@ export const styles = StyleSheet.create({
 });
 
 export const PictureContainer = styled.Image`
-  height: 45%;
+  height: 55%;
   width: 100%;
   z-index: 0;
   border-radius: 10px;

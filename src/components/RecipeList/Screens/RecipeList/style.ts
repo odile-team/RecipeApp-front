@@ -5,6 +5,7 @@ export const getStyles = (): any =>
   StyleSheet.create({
     ScrollViewContainer: {
       backgroundColor: 'white',
+      height: '80%',
     },
   });
 

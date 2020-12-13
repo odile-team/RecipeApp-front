@@ -7,7 +7,7 @@ export const SearchScreenContainer = styled.View`
 `;
 
 export const HeadContainer = styled.View`
-  height: 20%;
+  height: 25%;
 `;
 
 export const Title = styled.Text`

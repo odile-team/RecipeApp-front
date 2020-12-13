@@ -5,7 +5,8 @@ import { percentOf } from 'utils/percentOf';
 export const getStyles = (height: number) =>
   StyleSheet.create({
     ScrollViewContainer: {
-      height: percentOf(height, 80) - 15,
+      height: percentOf(height, 75),
+      paddingBottom: percentOf(height, 10),
     },
     titleContainer: {
       width: '100%',
@@ -15,6 +16,6 @@ export const getStyles = (height: number) =>
       height: percentOf(height, 5),
     },
     recipeListContainer: {
-      height: percentOf(height, 80) - 25,
+      height: percentOf(height, 100),
     },
   });

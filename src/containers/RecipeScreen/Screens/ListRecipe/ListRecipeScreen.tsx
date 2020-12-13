@@ -235,7 +235,7 @@ const ListRecipeScreen: FunctionComponent<ListRecipeProps> = () => {
   const height = Dimensions.get('window').height;
   const styles = getStyles(height);
 
-  const topHideValue = -percentOf(height, 10) - 30;
+  const topHideValue = -percentOf(height, 10);
 
   const titleAnimatedStyle = useAnimatedStyle(() => {
     const top = mix(transitionHeader.value, 0, topHideValue);

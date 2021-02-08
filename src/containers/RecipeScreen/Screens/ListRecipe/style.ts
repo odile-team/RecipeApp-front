@@ -1,25 +1,21 @@
 // @ts-ignore
-import styled from '@emotion/native';
 import { StyleSheet } from 'react-native';
 import { percentOf } from 'utils/percentOf';
 
 export const getStyles = (height: number) =>
   StyleSheet.create({
     ScrollViewContainer: {
-      height: percentOf(height, 80) - 15,
+      height: percentOf(height, 75),
+      paddingBottom: percentOf(height, 10),
+    },
+    titleContainer: {
+      width: '100%',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      marginBottom: 10,
+      height: percentOf(height, 5),
+    },
+    recipeListContainer: {
+      height: percentOf(height, 100),
     },
   });
-
-export const TitleContainer = styled.View`
-  width: 100%;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-bottom: 10px;
-`;
-
-export const ListCardsContainer = styled.View`
-  width: 100%;
-  height: 82%;
-  flex-direction: row;
-  flex-wrap: wrap;
-`;

@@ -1,13 +1,11 @@
 // @ts-ignore
 import styled from '@emotion/native';
 
-export const FullView = styled.View`
-  heigth: 100%;
-  width: 100%;
-`;
+export const FullView = styled.View``;
+
 export const BackButtonContainer = styled.View`
   position: absolute;
-  top: 6%;
+  top: 5%;
   left: 5%;
   z-index: 100;
 `;

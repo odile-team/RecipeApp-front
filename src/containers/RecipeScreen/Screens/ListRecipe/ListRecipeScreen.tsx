@@ -1,15 +1,22 @@
 import React, { FunctionComponent, useState, createContext, useEffect } from 'react';
 import { Dimensions, View } from 'react-native';
+import Animated, {
+  useAnimatedStyle,
+  useSharedValue,
+  useDerivedValue,
+  withSpring,
+} from 'react-native-reanimated';
+import { mix } from 'react-native-redash';
 
 import CategoriesTitle from './components/CategoriesTitle/CategoriesTitle';
 
 import { SafeAreaView } from 'globalStyles/index';
-import { TitleContainer, getStyles } from './style';
+import { getStyles } from './style';
 
 import { ListRecipeProps } from './types';
 import { Titles } from './config';
-import RecipeCards from './components/RecipeCards/RecipeCards';
-import { FlatList } from 'react-native-gesture-handler';
+import RecipeList from 'components/RecipeList';
+import { percentOf } from 'utils/percentOf';
 
 const dummy = {
   Matin: [
@@ -214,56 +221,55 @@ const dummy = {
   ],
 };
 
-export const Context = createContext(dummy.matin);
+export const Context = createContext(dummy.Matin);
 
-const ListRecipeScreen: FunctionComponent<ListRecipeProps> = ({ navigation }) => {
+const ListRecipeScreen: FunctionComponent<ListRecipeProps> = () => {
   const [whoFocused, setWhoFocused] = useState(Titles.matin);
+  const [data, setData] = useState(dummy[whoFocused]);
+  const [isOnList, setIsOnList] = useState(true);
+  const isHeaderHided: Animated.SharedValue<number> = useSharedValue(isOnList ? 0 : 1);
+  const transitionHeader: Animated.SharedValue<number> = useDerivedValue(() =>
+    withSpring(isHeaderHided.value)
+  );
+
   const height = Dimensions.get('window').height;
   const styles = getStyles(height);
-  const [data, setData] = useState(dummy[whoFocused]);
+
+  const topHideValue = -percentOf(height, 10);
+
+  const titleAnimatedStyle = useAnimatedStyle(() => {
+    const top = mix(transitionHeader.value, 0, topHideValue);
+    return { top, height: height - topHideValue };
+  });
+
+  const getRoute = (routeName: string) => {
+    setIsOnList(routeName === 'RecipeList');
+  };
 
   useEffect(() => {
     setData(dummy[whoFocused]);
   }, [whoFocused, dummy]);
 
-  const onPress = (i: number) => {
-    const newData = data;
-    newData[i].isLiked = !data[i].isLiked;
-    setData([...newData]);
-  };
-
-  const onNavigate = (index, props) => {
-    navigation.navigate('RecipeScreen', props);
-  };
-
   return (
-    <SafeAreaView>
-      <TitleContainer>
-        {Object.keys(Titles).map((key: string) => {
-          return (
-            <CategoriesTitle
-              key={key}
-              title={Titles[key]}
-              whoFocused={whoFocused}
-              onPress={setWhoFocused}
-            />
-          );
-        })}
-      </TitleContainer>
-      <Context.Provider value={data}>
-        <View style={styles.ScrollViewContainer}>
-          <FlatList
-            data={data}
-            renderItem={({ item, index }) => (
-              <RecipeCards key={index} onPress={onPress} index={index} onNavigate={onNavigate} />
-            )}
-            numColumns={2}
-            refreshing
-            keyExtractor={(item, index) => `key_${index}`}
-          />
+    <Animated.View style={titleAnimatedStyle}>
+      <SafeAreaView>
+        <View style={styles.titleContainer}>
+          {Object.keys(Titles).map((key: string) => {
+            return (
+              <CategoriesTitle
+                key={key}
+                title={Titles[key]}
+                whoFocused={whoFocused}
+                onPress={setWhoFocused}
+              />
+            );
+          })}
         </View>
-      </Context.Provider>
-    </SafeAreaView>
+        <View style={styles.recipeListContainer}>
+          <RecipeList data={data} getRoute={getRoute} />
+        </View>
+      </SafeAreaView>
+    </Animated.View>
   );
 };
 

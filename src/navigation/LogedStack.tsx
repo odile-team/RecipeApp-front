@@ -16,7 +16,7 @@ import { mainNavigatorOptions } from './navigationOptions/mainNavigatorOptions';
 
 const Tab = createBottomTabNavigator();
 
-const LogedStack = () => {
+const LogedStack = (): JSX.Element => {
   const windowHeight = Dimensions.get('window').height;
   const style = styles(windowHeight);
 

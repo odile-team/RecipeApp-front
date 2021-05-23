@@ -87,7 +87,7 @@
     "babel-jest": "~25.2.6",
     "detox": "^17.10.6",
     "detox-expo-helpers": "^0.6.0",
-    "eslint": "^7.12.1",
+    "eslint": "^7.27.0",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-config-universe": "^6.0.0",
     "eslint-plugin-import": "^2.22.1",
